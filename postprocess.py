@@ -38,5 +38,5 @@ def extract_power(generation, sol):
 if __name__ == "__main__":
     # parse argument from the commandline / system.
     gen_arg, sol_arg = tuple(sys.argv[1:3])
-    print(gen_arg, sol_arg)
-    pass
+    print(get_sol_dir(gen_arg, sol_arg))
+    
