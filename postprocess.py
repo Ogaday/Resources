@@ -11,6 +11,7 @@ import os
 runpath = "/scratch/wow203/OpenFOAM/wow203-2.1.0/run/"
 swak = "/swakExpression_"
 turbines = ["R1C1", "R2C1", "R2C2", "R3C1"]
+cos = ["x", "y"]
 
 def get_solution_dir(generation, sol):
     """Assert existence of case g.sol"""
@@ -30,7 +31,7 @@ def get_start_point(solution_dir):
     Get the highest number title of the subdirectories in the swak directories.
     Pass to it runpath+gen_dir+"/"+sol_dir ie. /scratch/wow203/OpenFOAM/wow203-2.1.0/run/batch10/step8/
     """
-    return max([int(entry.name.strip()) for entry in os.scandir("solution_dir"+swak+"Fx_inR1C1")])
+    return max([int(entry.name.strip()) for entry in os.scandir(solution_dir+swak+"Fx_inR1C1")])
 
 
 def extract_power(generation, sol):
@@ -54,6 +55,16 @@ def seek_last_line(file):
         #This method reads "random.number\r\n" and the others "random.number\n". Something to do with the decoding.
         return f.readlines()[-1].decode().strip()
 
+def get_F_in(start, co, turbine, solution_dir):
+    assert(co == "x" or co == "y")
+    assert(turbine in turbines)
+
+def get_F_out(start, co, turbine, solution_dir):
+    assert(co == "x" or co == "y")
+    assert(turbine in turbines)
+
+def get_T(start, turbine, solution_dir):
+    assert(turbine in turbines)
 
 if __name__ == "__main__":
     # parse argument from the commandline / system.
