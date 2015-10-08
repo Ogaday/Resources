@@ -19,7 +19,7 @@ def get_sol_dir(generation, sol):
         gen_dir = matches[0]
 
         matches = [entry for entry in (entry.name.strip() for entry in os.scandir(runpath+gen_dir)) if entry[-1*len(sol):]==sol]
-        if len(matches==1):
+        if len(matches)==1:
             sol_dir = matches[0]
 
             return (gen_dir, sol_dir)
