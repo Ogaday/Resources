@@ -32,8 +32,7 @@ def extract_power(generation, sol):
     """
     gen_sol_dir = get_sol_dir(generation, sol)
     if gen_sol_dir:
-
-
+        pass
 
 
 if __name__ == "__main__":
