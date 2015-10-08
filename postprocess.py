@@ -23,9 +23,13 @@ def get_solution_dir(generation, sol):
         if len(matches)==1:
             sol_dir = matches[0]
 
-            return (gen_dir, sol_dir)
+            return runpath+gen_dir+ "/" + sol_dir + "/"
 
 def get_start_point(solution_dir):
+    """
+    Get the highest number title of the subdirectories in the swak directories.
+    Pass to it runpath+gen_dir+"/"+sol_dir ie. /scratch/wow203/OpenFOAM/wow203-2.1.0/run/batch10/step8/
+    """
     return max([int(entry.name.strip()) for entry in os.scandir("solution_dir"+swak+"Fx_inR1C1")])
 
 
