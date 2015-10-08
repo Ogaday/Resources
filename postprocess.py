@@ -60,7 +60,7 @@ def get_F_in(start, co, turbine, solution_dir):
     assert(turbine in turbines)
 
 def get_F_out(start, co, turbine, solution_dir):
-    assert(co == "x" or co == "y")
+    assert(co in cos)
     assert(turbine in turbines)
 
 def get_T(start, turbine, solution_dir):
