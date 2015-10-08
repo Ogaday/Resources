@@ -7,6 +7,8 @@
 
 import os
 
+path = "/scratch/wow203/OpenFoam/"
+
 def calc_power(fx_in, fx_out, fy_in, fy_out, T):
     return (fx_in-fx_out+fy_in-fy_out)*T
 
