@@ -9,7 +9,7 @@ import sys
 import os
 
 runpath = "/scratch/wow203/OpenFOAM/wow203-2.1.0/run/"
-swak = "/swakExpression_"
+swak = "swakExpression_"
 turbines = ["R1C1", "R2C1", "R2C2", "R3C1"]
 cos = ["x", "y"]
 
@@ -58,19 +58,15 @@ def check_for_finish(solution_dir):
     """
     return "7000" in [entry.name.strip() for entry in os.scandir(solution_dir)]
 
-def write_results(solution_dir, powerdict):
+def write_results(solution_dir, powerdict, filename):
     """
     Given the solution_dir and a dictionary of turbine:power, write the results to a single line csv file.
     """ 
     results = ''
     for turbine in turbines:
         results += powerdict[turbine] + ','
-    with open() as f:
-        
-
-    
-            
-
+    with open(solution_dir+filename+'.csv', 'w') as f:
+        f.write(results[:-1])
 
 def seek_last_line(file):
     """
@@ -84,16 +80,26 @@ def seek_last_line(file):
         #This method reads "random.number\r\n" and the others "random.number\n". Something to do with the decoding.
         return f.readlines()[-1].decode().strip()
 
+#These methods would perhaps be more elegant if I used a dictionary for the string arguments
 def get_F_in(start, co, turbine, solution_dir):
     assert(co in cos)
     assert(turbine in turbines)
+    #last_line = seek_last_line("solution_dir{}F{}_in{}/".format(swak, c, turbine))
+    last_line = seek_last_line("{0}{1}F{2}_in{3}/{4}/F{2}_in{3}".format(solution_dir, swak, co, turbine, start))
+    return last_line.split()[1]
 
 def get_F_out(start, co, turbine, solution_dir):
     assert(co in cos)
     assert(turbine in turbines)
+    last_line = seek_last_line("{0}{1}F{2}_out{3}/{4}/F{2}_out{3}".format(solution_dir, swak, co, turbine, start))
+    #last_line = seek_last_line("solution_dir{}F{}_out{}/".format(swak, c, turbine))
+    return last_line.split()[1]
 
 def get_T(start, turbine, solution_dir):
     assert(turbine in turbines)
+    last_line = seek_last_line("{0}{1}T{2}v/{3}/T{2}v".format(solution_dir, swak, turbine, start))
+    #last_line = seek_last_line("{}T{}v/".format(swak, turbine))
+    return last_line.split()[1]
 
 if __name__ == "__main__":
     # parse argument from the commandline / system.
