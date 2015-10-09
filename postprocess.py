@@ -11,7 +11,7 @@ import os
 runpath = "/scratch/wow203/OpenFOAM/wow203-2.1.0/run/"
 swak = "swakExpression_"
 turbines = ["R1C1", "R2C1", "R2C2", "R3C1"]
-cos = ["x", "y"]
+cos = ["x", "z"]
 
 def get_generation_dir(generation):
     """
