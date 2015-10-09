@@ -13,18 +13,21 @@ swak = "/swakExpression_"
 turbines = ["R1C1", "R2C1", "R2C2", "R3C1"]
 cos = ["x", "y"]
 
-def get_solution_dir(generation, sol):
-    """Assert existence of case g.sol"""
-    matches = [entry for entry in (entry.name.strip() for entry in os.scandir(runpath)) if entry[-1*len(generation):]==generation]
-    #assert(len(matches==1))
+def get_generation_dir(generation):
+    """
+    Given a generation number, return the absolute reference to the generation directory.
+    """
+    matches = [entry for entry in [entry.name.strip() for entry in os.scandir(runpath)] if entry[-1*len(generation):]==generation]
     if len(matches) == 1:
-        gen_dir = matches[0]
+        return runpath+matches[0]+'/'
 
-        matches = [entry for entry in (entry.name.strip() for entry in os.scandir(runpath+gen_dir)) if entry[-1*len(sol):]==sol]
-        if len(matches)==1:
-            sol_dir = matches[0]
-
-            return runpath+gen_dir+ "/" + sol_dir + "/"
+def get_solution_dir(generation_dir, sol):
+    """
+    Given the absolute reference to the generation directory and a solution number, return the absolute reference to the solution directory.
+    """
+    matches = [entry for entry in (entry.name.strip() for entry in os.scandir(generation_dir)) if entry[-1*len(sol):]==sol]
+    if len(matches)==1:
+        return generation_dir + matches[0] + "/"
 
 def get_start_point(solution_dir):
     """
@@ -34,21 +37,36 @@ def get_start_point(solution_dir):
     return max([int(entry.name.strip()) for entry in os.scandir(solution_dir+swak+"Fx_inR1C1")])
 
 
-def extract_power(generation, sol):
+def extract_power(solution_dir):
     """
     Given the generation and sol of a case, check that the case a) exists b) has finished executing.
     Then find the timestep at which to seek from, then calculate the power extracted from each turbine.
     Finally, write the results to file/return the results.
     """
-    gen_sol_dir = get_solution_dir(generation, sol)
-    if gen_sol_dir:
-        pass
+    pass
+    # create dictionary of in forces, dictionary of out forces, dictionary of velocities
+    # for each turbine, calculate power and store in powerdict 
+    # return powerdict
+
+def check_for_finish(solution_dir):
+    """
+    Given solution directory, check that the final timestep (7000) has been reached.
+    """
+    return "7000" in [entry.name.strip() for entry in os.scandir(solution_dir)]
+
+def write_results(solution_dir, powerdict):
+    """
+    Given the solution_dir and a dictionary of turbine:power, write the results to a single line csv file.
+    """ 
+    pass
+
 
 def seek_last_line(file):
     """
     Take a file and return the last line in that file.
     
-    See https://github.com/Ogaday/PyDoodles for alternatives and benchmarks.
+    See https://github.com/Ogaday/PyDoodles for alternatives and benchmarks. This seems to be the fastest
+    method by some orders of magnitude.
     """
     with open(file, 'rb') as f:
         f.seek(-1024, os.SEEK_END)
@@ -56,7 +74,7 @@ def seek_last_line(file):
         return f.readlines()[-1].decode().strip()
 
 def get_F_in(start, co, turbine, solution_dir):
-    assert(co == "x" or co == "y")
+    assert(co in cos)
     assert(turbine in turbines)
 
 def get_F_out(start, co, turbine, solution_dir):
