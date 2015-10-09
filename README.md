@@ -14,6 +14,7 @@ Simple automation firstly:
  - Run OpenFoam scripts (blockMesh etc), run simulation in remote screens and detach.
  - Track progress of running simulations, display progress, location. Notify if simulations are failed/finished.
  - Postprocess, extract power, collect results.
+ - Write script to rename cases to sensible, unified names.
 Eventually have enough tools to automate a genetic algorithm etc. optimisation algorithm running remotely.
 
 ## To Do
