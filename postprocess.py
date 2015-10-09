@@ -4,6 +4,10 @@
 # Date: 2015/10/7
 
 # File usage:
+# In order to extract power and save in a .csv file named after the solution in
+# the solution directory, type the following in the shell:
+# $ python postprocesspy g s
+# Where g is the generation number/name and s is the solution number/name
 
 import sys
 import os
