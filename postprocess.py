@@ -116,6 +116,3 @@ if __name__ == "__main__":
     solution_dir = get_solution_dir(generation_dir, sol_arg)
     if check_for_finish(solution_dir):
         write_results(solution_dir, extract_power(solution_dir), get_solution_name(generation_dir, sol_arg))
-
-
-
