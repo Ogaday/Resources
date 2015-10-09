@@ -47,10 +47,10 @@ def extract_power(solution_dir):
     powerdict = {}
     start = get_start_point(solution_dir)
     for turbine in turbines:
-        powerdict[turbine] = sum([get_F_in(start, co, turbine, solution_dir)-get_F_out(start, co, turbine, solution_dir) for co in cos])*get_T(start, turbine, solution_dir)
+        powerdict[turbine] = sum([float(get_F_in(start, co, turbine, solution_dir))-float(get_F_out(start, co, turbine, solution_dir)) for co in cos])*float(get_T(start, turbine, solution_dir))
     # create dictionary of in forces, dictionary of out forces, dictionary of velocities
     # for each turbine, calculate power and store in powerdict 
-    # return powerdict
+    return powerdict
 
 def check_for_finish(solution_dir):
     """
@@ -69,7 +69,7 @@ def write_results(solution_dir, powerdict, filename):
         f.write(results[:-1])
 
 def seek_last_line(file):
-    """
+    ""
     Take a file and return the last line in that file.
     
     See https://github.com/Ogaday/PyDoodles for alternatives and benchmarks. This seems to be the fastest
