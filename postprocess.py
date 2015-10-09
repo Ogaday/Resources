@@ -44,6 +44,10 @@ def extract_power(solution_dir):
     Finally, write the results to file/return the results.
     """
     pass
+    powerdict = {}
+    start = get_start_point(solution_dir)
+    for turbine in turbines:
+        powerdict[turbine] = sum([get_F_in(start, co, turbine, solution_dir)-get_F_out(start, co, turbine, solution_dir) for co in cos])*get_T(start, turbine, solution_dir)
     # create dictionary of in forces, dictionary of out forces, dictionary of velocities
     # for each turbine, calculate power and store in powerdict 
     # return powerdict
@@ -58,7 +62,10 @@ def write_results(solution_dir, powerdict):
     """
     Given the solution_dir and a dictionary of turbine:power, write the results to a single line csv file.
     """ 
-    pass
+    with open() as f:
+
+        for turbine in turbines:
+            pass
 
 
 def seek_last_line(file):
