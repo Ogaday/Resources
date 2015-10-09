@@ -22,3 +22,6 @@ Eventually have enough tools to automate a genetic algorithm etc. optimisation a
  - Decide on directory structure (python module necessary?).
  - Create case template.
  - Write test suite for the scipts.
+
+## Notes / Gotchas
+ - Careful with the samples wth read "8.10R" for instance: the reruns have R appended to them.
