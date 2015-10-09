@@ -72,7 +72,7 @@ def write_results(solution_dir, powerdict, filename):
     """ 
     results = ''
     for turbine in turbines:
-        results += powerdict[turbine] + ','
+        results += str(powerdict[turbine]) + ','
     with open(solution_dir+filename+'.csv', 'w') as f:
         f.write(results[:-1])
 
