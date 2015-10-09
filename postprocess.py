@@ -62,10 +62,14 @@ def write_results(solution_dir, powerdict):
     """
     Given the solution_dir and a dictionary of turbine:power, write the results to a single line csv file.
     """ 
+    results = ''
+    for turbine in turbines:
+        results += powerdict[turbine] + ','
     with open() as f:
+        
 
-        for turbine in turbines:
-            pass
+    
+            
 
 
 def seek_last_line(file):
