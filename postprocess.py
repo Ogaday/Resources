@@ -29,6 +29,14 @@ def get_solution_dir(generation_dir, sol):
     if len(matches)==1:
         return generation_dir + matches[0] + "/"
 
+def get_solution_name(generation_dir, sol):
+    """
+    Given the absolute reference to the generation directory and a solution number, return the absolute reference to the solution directory.
+    """
+    matches = [entry for entry in (entry.name.strip() for entry in os.scandir(generation_dir)) if entry[-1*len(sol):]==sol]
+    if len(matches)==1:
+        return matches[0]
+
 def get_start_point(solution_dir):
     """
     Get the highest number title of the subdirectories in the swak directories.
@@ -69,7 +77,7 @@ def write_results(solution_dir, powerdict, filename):
         f.write(results[:-1])
 
 def seek_last_line(file):
-    ""
+    """
     Take a file and return the last line in that file.
     
     See https://github.com/Ogaday/PyDoodles for alternatives and benchmarks. This seems to be the fastest
@@ -103,6 +111,11 @@ def get_T(start, turbine, solution_dir):
 
 if __name__ == "__main__":
     # parse argument from the commandline / system.
-    gen_arg, sol_arg = tuple(sys.argv[1:3])
-    print(get_solution_dir(gen_arg, sol_arg))
-    
+    gen_arg, sol_arg = sys.argv[1:3]
+    generation_dir = get_generation_dir(gen_arg)
+    solution_dir = get_solution_dir(generation_dir, sol_arg)
+    if check_for_finish(solution_dir):
+        write_results(solution_dir, extract_power(solution_dir), get_solution_name(generation_dir, sol_arg))
+
+
+
