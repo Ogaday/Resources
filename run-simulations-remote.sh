@@ -1,10 +1,15 @@
 #!/bin/bash
+# Execute this script in a screen so it can be detached
+
 for host in $(cat hosts.txt); do
   echo $host
 done
 
-readarray -t hosts < hosts.txt
-readarray -t jobs < jobs.txt
+#readarray -t hosts < hosts.txt
+#readarray -t jobs < jobs.txt
+
+hosts=( "blue01" "blue02" )
+jobs=( "09.04R" "09.10R" )
 
 echo "length hosts: ${#hosts[@]}"
 echo "length jobs: ${#jobs[@]}"
@@ -23,4 +28,6 @@ fi
 
 for ((i=0;i<$extent;++i)); do
   echo "${hosts[i]} runs ${jobs[i]}"
+  scp /scratch/wow203/CFD_Files/${jobs[i]} wow203@${hosts[i]}:"/scratch/wow203/OpenFOAM/wow203-2.1.0/run/generation${jobs[i]:0:2}/${jobs[i]}"
+  ssh wow203@${hosts[i]} cd "/scratch/wow203/OpenFOAM/wow203-2.1.0/run/generation${jobs[i]:0:2}/${jobs[i]}" && blockMesh && topoSet && setsToZones && setFields && TInterfoam &> log &  
 done
