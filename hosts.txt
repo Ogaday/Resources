@@ -15,7 +15,7 @@ Blue15
 Blue16
 Blue17
 Blue18
-Blue19
+Blue21
 Blue22
 Blue23
 Blue24
@@ -25,6 +25,5 @@ Blue27
 Blue28
 Blue29
 Blue30
-emps-smetana
 emps-bartok
 emps-smith
