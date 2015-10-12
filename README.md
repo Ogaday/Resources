@@ -28,6 +28,6 @@ Eventually have enough tools to automate a genetic algorithm etc. optimisation a
  - Careful with the samples wth read "8.10R" for instance: the reruns have R appended to them.
 
 ## Instructions
- - In order to validate each host, try ```for host in $(cat hosts.txt); do ping $host -c 4; done```. This will let you know which servers are responding. The try ```for host in $(cat hosts.txt); do ssh wow203@$host echo hello $host; done```. This will let you add the hosts to known hosts.
+ - In order to validate each host, try ```for host in $(cat hosts.txt); do ping $host -c 4; done | grep packets```. This will let you know which servers are responding. Then try ```for host in $(cat hosts.txt); do ssh wow203@$host echo Hello $host; done```. This will let you add the hosts to known hosts.
 
 
