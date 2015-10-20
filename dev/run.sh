@@ -24,4 +24,4 @@ screen -d -m -S "screen$solid" -t "$solid"
 # screen -d -m -S test_screen
 # screen -S test_screen -p 0 -X stuff "sleep 5 && touch ~/Project/Resources/dev/hello_world && sleep 1$(printf \\r)"
 
-screen -S "screen$solid" -p "$solid" -X stuff "cd $soldir && blockMesh && topoSet && setsToZones && setFields && TInterFoam &> log &$(printf \\r)"
+screen -S "screen$solid" -p "$solid" -X stuff "cd $soldir && blockMesh && topoSet && setsToZones && setFields && nice -n 1 TInterFoam &> log &$(printf \\r)"
