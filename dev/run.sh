@@ -16,8 +16,8 @@ solid=${soldir#*generation*/}
 echo "solution dir is $soldir"
 echo "solution id is $solid"
 
-screen -d -m -S "screen-$solid" -t "$solid"
-screen -S "screen-$solid" -p "$solid" -X stuff "echo \"solution dir is $soldir\"$(printf \\r)"
+screen -d -m -S "screen$solid" -t "$solid"
+screen -S "screen$solid" -p "$solid" -X stuff "echo \"solution dir is $soldir\"$(printf \\r)"
 
 # One method, for instance:
 # screen -d -m -S test_screen
