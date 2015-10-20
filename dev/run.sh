@@ -17,12 +17,11 @@ echo "solution dir is $soldir"
 echo "solution id is $solid"
 
 screen -d -m -S "screen$solid" -t "$solid"
-screen -S "screen$solid" -p "$solid" -X stuff "cd $soldir && touch screen_touch_$solid.txt$(printf \\r)"
+#screen -S "screen$solid" -p "$solid" -X stuff "cd $soldir && touch screen_touch_$solid.txt$(printf \\r)"
 #screen -S "screen$solid" -p "$solid" -X stuff "echo \"solution dir is $soldir\"$(printf \\r)"
 
 # One method, for instance:
 # screen -d -m -S test_screen
 # screen -S test_screen -p 0 -X stuff "sleep 5 && touch ~/Project/Resources/dev/hello_world && sleep 1$(printf \\r)"
 
-screen -S "screen$solid" -p "$solid" -X stuff "cd $soldir && blockMesh && topoSet && setsToZones && setFields && TInterFoam &> log &"
-
+screen -S "screen$solid" -p "$solid" -X stuff "cd $soldir && blockMesh && topoSet && setsToZones && setFields && TInterFoam &> log &$(printf \\r)"
