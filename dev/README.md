@@ -25,6 +25,10 @@ This command creates a detached screen with screen name ```screen<solid>``` for 
 ``` $ ./remote-run.sh casepath genid solno remotehost ```
 for local path to the case "casepath", generation id "genid", solution number "solno", remote host name "remotehost". This command copies the case files from the local path to the remote host to a default run directory via scp, and then calls run.sh as described above via ssh.
 
+## remote-setup.sh
+``` $ ./remote-setup.sh hostname```
+for host name ie. blue03 "hostname", access the machine via ssh and start a screen in which to build and make the CFD solvers and utilities TInterfoam and swak4foam.
+
 ## To Do
 
 Still to do:
