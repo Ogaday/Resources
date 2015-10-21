@@ -24,7 +24,7 @@ else
 fi
 
 for ((i=0;i<$extent;++i)); do
-  # echo "${hosts[i]} runs ${jobs[i]}" >> ~/Project/CFD_Files/jobtraq.txt
+  echo "${hosts[i]} runs ${jobs[i]}" >> ~/Project/CFD_Files/jobtraq.txt
   echo "${hosts[i]} runs ${jobs[i]}"
   solno=${jobs[i]#*.}
   genid=${jobs[i]%.$solno}
@@ -33,5 +33,7 @@ for ((i=0;i<$extent;++i)); do
   echo "gen id: $genid"
   echo "solution no.: $solno"
   echo "remote host: ${hosts[i]}"
-  #./remote-run.sh /home/ogaday/Project
+  echo "passing args..."
+  ./remote-run.sh "$casepath" "$genid" "$solno" "${hosts[i]}"
+  echo ""
 done
