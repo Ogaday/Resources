@@ -8,13 +8,19 @@ This directory contains refactored of bash scripts used to run CFD simulations o
 
 ```
     $ cd path/to/solution/dir 
-    $ run.sh
+    $ ./run.sh
 ```
 OR to run solution 11 from generation 10, if the run directory is /scratch/wow203/OpenFOAM/wow203-2.1.0/run
 ```
-    $ run.sh 10 11
+    $ ./run.sh 10 11
 ```
 OR to run solution 11 from generation 10 with in a specified run directory.
 ```
-    $run.sh path/to/run/dir 10 11
+    $ ./run.sh path/to/run/dir 10 11
 ```
+This command creates a detached screen with screen name ```screen<solid>``` for <solid>=10.11 for instance, and window name <solid>. It then sends a command to that screen to change directory to the case directory, run blockMesh, etc and finally the solver, logging output to log. The screen can be reattached by ```screen -r screen<solid>```, and should be killed once the simulation is complete - should be automated.
+
+### remote-run.sh
+
+``` $ ./remote-run.sh casepath genid solno remotehost ```
+for local path to the case "casepath", generation id "genid", solution number "solno", remote host name "remotehost". This 
