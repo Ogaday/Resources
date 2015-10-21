@@ -1,15 +1,12 @@
 #!/bin/bash
 
-readarray -t hosts < hosts.txt
-readarray -t jobs < jobs.txt
-
-#hosts=( "blue03" "blue04" )
-#jobs=( "11.02" "11.03" )
+readarray -t hosts < $1
+readarray -t jobs < $2
 
 echo "length hosts: ${#hosts[@]}"
 echo "length jobs: ${#jobs[@]}"
 
-if [ "${#jobs[@]}" -lt "${#hosts[@]}" ]; then
+if [ "${#jobs[@]}" -le "${#hosts[@]}" ]; then
     echo "Length of jobs is shorter: ${#jobs[@]}"
     extent=${#jobs[@]}
 else
@@ -18,9 +15,7 @@ else
 fi
 
 for ((i=0;i<$extent;++i)); do
+  # echo "${hosts[i]} runs ${jobs[i]}" >> ~/Project/CFD_Files/jobtraq.txt
   echo "${hosts[i]} runs ${jobs[i]}"
-  cp ~/Project/Resources/run.sh /scratch/wow203/CFD_Files/${jobs[i]}
-    scp -r /scratch/wow203/CFD_Files/${jobs[i]} wow203@${hosts[i]}:"/scratch/wow203/OpenFOAM/wow203-2.1.0/run/generation${jobs[i]:0:2}/${jobs[i]}"
-   ssh wow203@${hosts[i]} "cd /scratch/wow203/OpenFOAM/wow203-2.1.0/run/generation${jobs[i]:0:2}/${jobs[i]} && ./run.sh"
 done
 

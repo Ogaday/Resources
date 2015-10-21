@@ -29,6 +29,10 @@ for local path to the case "casepath", generation id "genid", solution number "s
 ``` $ ./remote-setup.sh hostname```
 for host name ie. blue03 "hostname", access the machine via ssh and start a screen in which to build and make the CFD solvers and utilities TInterfoam and swak4foam.
 
+## all-remote-run.sh
+``` $ ./all-remote-run.sh hosts.txt jobs.txt```
+for text files list of hosts hosts.txt and list of cases jobs.txt, pair up and remotely run each case on a new host.
+
 ## To Do
 
 Still to do:
@@ -41,3 +45,4 @@ Still to do:
 3) repeat step 2) until the script finishes.
  - Script to check capacity of remote hosts.
  - script to check progress of remotely running simulations.
+ - Improve load balancing on all-remote-run. Currently, at least, no machine will be overloaded, and it will run one job per machine. It's not the most elegant, but it works, I guess.
