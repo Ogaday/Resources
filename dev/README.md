@@ -24,3 +24,16 @@ This command creates a detached screen with screen name ```screen<solid>``` for 
 
 ``` $ ./remote-run.sh casepath genid solno remotehost ```
 for local path to the case "casepath", generation id "genid", solution number "solno", remote host name "remotehost". This command copies the case files from the local path to the remote host to a default run directory via scp, and then calls run.sh as described above via ssh.
+
+## To Do
+
+Still to do:
+ - Error checking/misuse scenarios. Currently, there is no sort of error checking, use case handling for when incorrect arguments are entered, the script is run in the wrong directory etc. Because the scripts are very powerful, it would be good to do some of that at some point because they could unleash havock.
+ - Sniffer script. To run on each blue room machine. Logs the most recent users of each machine so it is possible to see who might have turned off the machines. (half joke).
+ - All remote run script - to do batch remote runs of cases.
+ - script to check which hosts are online. Currently, the best model I have is:
+1) ```cp hosts_master.txt new_hosts.txt;```
+2) ```for host in $new_hosts; do ssh wow203@$host "echo Hello $host"; done;```. When the script hangs, delete the offending host from new hosts
+3) repeat step 2) until the script finishes.
+ - Script to check capacity of remote hosts.
+ - script to check progress of remotely running simulations.
