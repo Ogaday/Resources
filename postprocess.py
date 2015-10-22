@@ -34,7 +34,7 @@ def get_solution_dir(generation_dir, sol):
     if len(matches)==1:
         return generation_dir +"/"+ matches[0] + "/"
     else:
-        raise Exception("Multiple solution directoies")
+        raise Exception("Multiple solution directories: {}".format(matches))
 
 def get_solution_name(generation_dir, sol):
     """
@@ -124,6 +124,8 @@ if __name__ == "__main__":
         while runpath[-1] == '/' and len(runpath)>1:
             runpath=runpath[:-1]
     generation_dir = get_generation_dir(gen_arg)
+    print(generation_dir)
     solution_dir = get_solution_dir(generation_dir, sol_arg)
+    print(solution_dir)
     if check_for_finish(solution_dir):
         write_results(solution_dir, extract_power(solution_dir), get_solution_name(generation_dir, sol_arg))
