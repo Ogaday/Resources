@@ -12,7 +12,7 @@
 import sys
 import os
 
-runpath = "/scratch/wow203/OpenFOAM/wow203-2.1.0/run/"
+runpath = "/scratch/wow203/OpenFOAM/wow203-2.1.0/run"
 swak = "swakExpression_"
 turbines = ["R1C1", "R2C1", "R2C2", "R3C1"]
 cos = ["x", "z"]
@@ -21,9 +21,10 @@ def get_generation_dir(generation):
     """
     Given a generation number, return the absolute reference to the generation directory.
     """
-    matches = [entry for entry in [entry.name.strip() for entry in os.scandir(runpath)] if entry[-1*len(generation):]==generation]
-    if len(matches) == 1:
-        return runpath+matches[0]+'/'
+    #matches = [entry for entry in [entry.name.strip() for entry in os.scandir(runpath)] if entry[-1*len(generation):]==generation]
+    #if len(matches) == 1:
+    #    return runpath+matches[0]+'/'
+    return runpath+"/generation"+generation
 
 def get_solution_dir(generation_dir, sol):
     """
@@ -32,6 +33,8 @@ def get_solution_dir(generation_dir, sol):
     matches = [entry for entry in (entry.name.strip() for entry in os.scandir(generation_dir)) if entry[-1*len(sol):]==sol]
     if len(matches)==1:
         return generation_dir + matches[0] + "/"
+    else:
+        raise Exception("Multiple solution directoies")
 
 def get_solution_name(generation_dir, sol):
     """
@@ -118,6 +121,8 @@ if __name__ == "__main__":
     gen_arg, sol_arg = sys.argv[1:3]
     if len(sys.argv) == 4:
         runpath = sys.argv[-1]
+        while runpath[-1] == '/' and len(runpath)>1:
+            runpath=runpath[:-1]
     generation_dir = get_generation_dir(gen_arg)
     solution_dir = get_solution_dir(generation_dir, sol_arg)
     if check_for_finish(solution_dir):
