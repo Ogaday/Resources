@@ -32,7 +32,7 @@ def get_solution_dir(generation_dir, sol):
     """
     matches = [entry for entry in (entry.name.strip() for entry in os.scandir(generation_dir)) if entry[-1*len(sol):]==sol]
     if len(matches)==1:
-        return generation_dir + matches[0] + "/"
+        return generation_dir +"/"+ matches[0] + "/"
     else:
         raise Exception("Multiple solution directoies")
 
