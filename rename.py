@@ -17,9 +17,9 @@ for e in [entry for entry in [entry.name for entry in os.scandir()] if entry[:le
     
     if len(e)-len(old_name) == 1:
         os.rename(e, gen+'.0' + e[-1])
-    elsif len(e)-len(old_name) == 2 and e[-1] == 'R':
+    elif len(e)-len(old_name) == 2 and e[-1] == 'R':
         os.rename(e, gen+'.0'+e[-2:]
-    elsif len(e)-len(old_name) == 3 and e[-1] == 'R':
+    elif len(e)-len(old_name) == 3 and e[-1] == 'R':
         os.rename(e, gen+'.'e[-3:]
     else:
         os.rename(e, gen+'.' + e[-2:])
