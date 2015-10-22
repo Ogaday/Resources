@@ -116,6 +116,8 @@ def get_T(start, turbine, solution_dir):
 if __name__ == "__main__":
     # parse argument from the commandline / system.
     gen_arg, sol_arg = sys.argv[1:3]
+    if len(sys.argv) == 4:
+        runpath = sys.argv[-1]
     generation_dir = get_generation_dir(gen_arg)
     solution_dir = get_solution_dir(generation_dir, sol_arg)
     if check_for_finish(solution_dir):
