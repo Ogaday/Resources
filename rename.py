@@ -29,4 +29,5 @@ if __name__ == "__main__":
     genid, old_name = sys.argv[1:3]
 
     for e in [entry for entry in [entry.name for entry in os.scandir()] if entry[:len(old_name)] == old_name]:
-        print(e)
+        #print(e)
+        os.rename(e,genid+'.0'+e[-1])
