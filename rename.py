@@ -30,4 +30,5 @@ if __name__ == "__main__":
 
     for e in [entry for entry in [entry.name for entry in os.scandir()] if entry[:len(old_name)] == old_name]:
         #print(e)
-        os.rename(e,genid+'.0'+e[-1])
+        len_diff = len(e)-len(old_name)
+        os.rename(e,genid+'.'+'0'*(2-len_diff)+e[-1*len_diff])
