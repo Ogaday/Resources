@@ -1,4 +1,10 @@
 #!/bin/bash
+# Script to remotely start a CFD simulation in a screen on a given host.
+# Inputs are eg.
+# casepath=/path/to/case/files
+# genid=10
+# solid=15
+# remotehost=blue02
 
 echo "args are $@"
 args=("$@")
