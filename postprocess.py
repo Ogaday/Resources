@@ -134,8 +134,8 @@ def write_vals(solution_dir, filename):
     vals = []
     start=get_start_point(solution_dir)
     for d in dirs:
-        val.append(get_val(d+"/"+start+"/"+d[15:]))
-    with open(solution_dir+filename+'raw.csv', 'w') as f:
+        vals.append(get_val(solution_dir+d+"/"+str(start)+"/"+d[15:]))
+    with open(solution_dir+filename+'-raw.csv', 'w') as f:
         f.write(','.join(vals))
 
 helpstring="""Postprocess information
@@ -156,6 +156,7 @@ if __name__ == "__main__":
         if '-v' in sys.argv:
             verbose=True
             sys.argv.remove('-v')
+            assert(len(sys.argv)==3)
         else:
             verbose=False
         gen_arg, sol_arg = sys.argv[1:3]
