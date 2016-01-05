@@ -17,5 +17,5 @@ fi
 
 for ((i=0;i<$extent;++i)); do
   echo "Closing ${jobs[i]} on ${hosts[i]}"
-  #~/Project/Resources/dev/remote-close-screen.sh ${jobs[i]} ${hosts[i]}
+  ~/Project/Resources/dev/remote-close-screen.sh ${jobs[i]} ${hosts[i]}
 done
