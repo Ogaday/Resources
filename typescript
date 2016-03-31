@@ -1,0 +1,26 @@
+Script started on Fri 06 Nov 2015 15:28:18 GMT
+]0;ogaday@workOggu: ~/Project/Resourcesogaday@workOggu:~/Project/Resources$ hosts=("emps-ives" "blue04" "blue05" "blue07" "blue08" "blue09")
+]0;ogaday@workOggu: ~/Project/Resourcesogaday@workOggu:~/Project/Resources$ jobs=("12 10" "12 17" "12 18" "12 19" "12 20" "12 21")
+]0;ogaday@workOggu: ~/Project/Resourcesogaday@workOggu:~/Project/Resources$ if [ ${#hosts[@]} -w[Keq ${#jobs[@]} ]; then ./remote-postprocess-raw.sh [K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kfor (())i))=))0));))i))<))$)){))#))h))o))s))t))s))[))@))]))}));))+))+))i))[C[C; do ;done ;d[Kfi[C[C[1@ [1@.[1@/[1@r[1@e[1@m[15@ote-postprocess[1@-[6@raw.sh[C[1@ [1@$[1@h[1@o[1@s[1@t[1@s[1@[[1@i[1@][1@}[1@{[C[C[C[C[C[C[C[C[C[C[1@$[1@{[1@}[1@j[1@o[1@b[1@s[1@[[1@i[1@][C[C[1@ [1P[C[1@ [C[C[C[C[C[1P;fi[C fi
+/scratch/wow203/OpenFOAM/wow203-2.1.0/run/generation12
+/scratch/wow203/OpenFOAM/wow203-2.1.0/run/generation12/12.10/
+12.10-raw.csv                                                                                                                                                                  0%    0     0.0KB/s   --:-- ETA12.10-raw.csv                                                                                                                                                                100%  168     0.2KB/s   00:00    
+/scratch/wow203/OpenFOAM/wow203-2.1.0/run/generation12
+/scratch/wow203/OpenFOAM/wow203-2.1.0/run/generation12/12.17/
+12.17-raw.csv                                                                                                                                                                  0%    0     0.0KB/s   --:-- ETA12.17-raw.csv                                                                                                                                                                100%  167     0.2KB/s   00:00    
+/scratch/wow203/OpenFOAM/wow203-2.1.0/run/generation12
+/scratch/wow203/OpenFOAM/wow203-2.1.0/run/generation12/12.18/
+12.18-raw.csv                                                                                                                                                                  0%    0     0.0KB/s   --:-- ETA12.18-raw.csv                                                                                                                                                                100%  165     0.2KB/s   00:00    
+/scratch/wow203/OpenFOAM/wow203-2.1.0/run/generation12
+/scratch/wow203/OpenFOAM/wow203-2.1.0/run/generation12/12.19/
+12.19-raw.csv                                                                                                                                                                  0%    0     0.0KB/s   --:-- ETA12.19-raw.csv                                                                                                                                                                100%  169     0.2KB/s   00:00    
+/scratch/wow203/OpenFOAM/wow203-2.1.0/run/generation12
+/scratch/wow203/OpenFOAM/wow203-2.1.0/run/generation12/12.20/
+12.20-raw.csv                                                                                                                                                                  0%    0     0.0KB/s   --:-- ETA12.20-raw.csv                                                                                                                                                                100%  168     0.2KB/s   00:00    
+/scratch/wow203/OpenFOAM/wow203-2.1.0/run/generation12
+/scratch/wow203/OpenFOAM/wow203-2.1.0/run/generation12/12.21/
+12.21-raw.csv                                                                                                                                                                  0%    0     0.0KB/s   --:-- ETA12.21-raw.csv                                                                                                                                                                100%  166     0.2KB/s   00:00    
+]0;ogaday@workOggu: ~/Project/Resourcesogaday@workOggu:~/Project/Resources$ exit
+exit
+
+Script done on Fri 06 Nov 2015 16:38:32 GMT
